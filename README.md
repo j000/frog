@@ -10,4 +10,4 @@ https://www.youtube.com/watch?v=ZLTyX4zL2Fc
 
 ------
 
-This simulations does exactly that. Jumps to random position until it reaches other river bank. Then calculate average numer of jumps.
+This simulations does exactly that. Jumps to random position until it reaches other river bank. Then calculate average numer of jumps. Data is printed every 1000th iteration.

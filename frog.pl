@@ -21,10 +21,10 @@ while(1) {
 	my $location = $WIDTH;
 	my $jumps_count = 0;
 	while ($location > 0) {
-		my $jump = 1 + int(rand($location));
+		my $jump = int(rand($location));
 		$jumps_count += 1;
-		$location -= $jump;
-		print('*'.' 'x($jump - 1)) if (!$counter);
+		$location -= $jump + 1;
+		print('*'.' 'x$jump) if (!$counter);
 	}
 	$avg->add($jumps_count);
 	printf('*   %d   Average: %.9f over %d tests'."\n", $jumps_count, $avg->value(), $avg->count()) if (!$counter);
