@@ -16,22 +16,16 @@ my $counter = 0;
 say('0123456789A');
 while(1) {
 	$counter += 1;
-	if ($counter == $PRINT) {
-		$counter = 0;
-	}
+	$counter = 0 if ($counter == $PRINT);
 
 	my $location = $WIDTH;
 	my $jumps_count = 0;
 	while ($location > 0) {
-		print('*') if (!$counter);
 		my $jump = 1 + int(rand($location));
 		$jumps_count += 1;
 		$location -= $jump;
-		print(' 'x($jump - 1)) if (!$counter);
+		print('*'.' 'x($jump - 1)) if (!$counter);
 	}
 	$avg->add($jumps_count);
-	print('*'.' 'x3) if(!$counter);
-	print($jumps_count.' 'x3) if(!$counter);
-	printf('Average: %.9f',$avg->value()) if(!$counter);
-	say(' over '.$avg->count().' attempts') if(!$counter);
+	printf('*   %d   Average: %.9f over %d tests'."\n", $jumps_count, $avg->value(), $avg->count()) if (!$counter);
 }
