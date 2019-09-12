@@ -8,6 +8,7 @@ sub new {
 	my $class = shift;
 	my $self = {
 		_count => 0,
+		_sum => 0,
 		_avg => 0.0,
 	};
 	bless $self, $class;
@@ -18,6 +19,7 @@ sub add {
 	my $self = shift;
 	my $current = shift;
 	$self->{_count} += 1;
+	$self->{_sum} += $current;
 	$self->{_avg} += ($current - $self->{_avg}) / $self->{_count};
 }
 
@@ -29,6 +31,11 @@ sub value {
 sub count {
 	my $self = shift;
 	return $self->{_count};
+}
+
+sub sum {
+	my $self = shift;
+	return $self->{_sum};
 }
 
 1;
