@@ -10,7 +10,7 @@ use Average;
 use Parallel::ForkManager;
 
 use constant WIDTH => 10;
-use constant PRINT => 100_000;
+use constant PRINT => 1_000_000;
 
 sub simulate {
 	my $flag = 1;
@@ -59,6 +59,7 @@ if ($forks) {
 	DATA_LOOP:
     foreach (1 .. $forks) {
         my $pid = $pm->start and next DATA_LOOP;
+		srand();
         my $res = simulate();
         $pm->finish(0, {
 				result => $res,
